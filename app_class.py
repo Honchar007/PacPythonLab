@@ -3,6 +3,7 @@ import sys
 from settings import *
 from player_class import *
 from bfs import *
+from ucs import *
 from dfs import *
 pygame.init()
 vec = pygame.math.Vector2
@@ -82,14 +83,15 @@ class App:
                 for xidx, char in enumerate(line):
                     if char == '1':
                         self.walls.append(vec(xidx,yidx))
-        goal_x = 1
-        goal_y = 20
+        goal_x = 11
+        goal_y = 16
         #dist = bfs(MATRIX, (1, 1),(goal_x,goal_y))
-        go_to(1,1,goal_x,goal_y)
-        dist = print_sol(final_path)
+        #go_to(1,1,goal_x,goal_y)
+        #dist = print_sol(final_path)
         #print("Shortest Path is", dist[0])
+        ucs(goal_x,goal_y)
+        dist = solution
         for x, y in dist:
-            print(x,":",y)
             pygame.draw.rect(self.background, (112,55,163), (y*self.cell_width, x*self.cell_height, self.cell_width, self.cell_height))
 
         pygame.draw.rect(self.background, RED,
