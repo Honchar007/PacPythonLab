@@ -2,7 +2,8 @@ import pygame
 import sys
 from settings import *
 from player_class import *
-
+from bfs import *
+from dfs import *
 pygame.init()
 vec = pygame.math.Vector2
 
@@ -50,8 +51,9 @@ class App:
             pygame.draw.line(self.background, GREY, (0, x * self.cell_height),
                              (WIDTH, x * self.cell_height))
 
-        for wall in self.walls:
-            pygame.draw.rect(self.background, (112,55,163), (wall.x*self.cell_width,wall.y*self.cell_height, self.cell_width, self.cell_height))
+        #for wall in self.walls:
+        #    pygame.draw.rect(self.background, (112,55,163), (wall.x*self.cell_width,wall.y*self.cell_height, self.cell_width, self.cell_height))
+
     ###################################### INTRO FUNCTIONS ###################
 
     def start_events(self):
@@ -80,6 +82,18 @@ class App:
                 for xidx, char in enumerate(line):
                     if char == '1':
                         self.walls.append(vec(xidx,yidx))
+        goal_x = 1
+        goal_y = 20
+        #dist = bfs(MATRIX, (1, 1),(goal_x,goal_y))
+        go_to(1,1,goal_x,goal_y)
+        dist = print_sol(final_path)
+        #print("Shortest Path is", dist[0])
+        for x, y in dist:
+            print(x,":",y)
+            pygame.draw.rect(self.background, (112,55,163), (y*self.cell_width, x*self.cell_height, self.cell_width, self.cell_height))
+
+        pygame.draw.rect(self.background, RED,
+                         (goal_y * self.cell_width, goal_x * self.cell_height, self.cell_width, self.cell_height))
 
     ###################################### PLAY FUNCTIONS ###################
 
