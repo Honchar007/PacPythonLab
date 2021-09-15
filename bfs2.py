@@ -87,27 +87,3 @@ def BFS(mat, src: Point, dest: Point):
     return -1
 
 
-# Driver code
-def main():
-    mat = [[1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
-           [1, 0, 1, 0, 1, 1, 1, 0, 1, 1],
-           [1, 1, 1, 0, 1, 1, 0, 1, 0, 1],
-           [0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
-           [1, 1, 1, 0, 1, 1, 1, 0, 1, 0],
-           [1, 0, 1, 1, 1, 1, 0, 1, 0, 0],
-           [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-           [1, 0, 1, 1, 1, 1, 0, 1, 1, 1],
-           [1, 1, 0, 0, 0, 0, 1, 0, 0, 1]]
-    source = Point(0, 0)
-    dest = Point(3, 4)
-
-    dist = BFS(mat, source, dest)
-
-    if dist != -1:
-        print("Shortest Path is", dist)
-    else:
-        print("Shortest Path doesn't exist")
-
-
-#main()
-
